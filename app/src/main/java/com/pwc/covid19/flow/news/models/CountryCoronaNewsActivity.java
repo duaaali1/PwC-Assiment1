@@ -30,7 +30,7 @@ public class CountryCoronaNewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country_corona_news);
-        apiInterface = APIClient.getClient().create(ApiInterface.class);
+        apiInterface = APIClient.getClient(this).create(ApiInterface.class);
 
         countryName = getIntent().getStringExtra(EXTRA_COUNTRY);
         getCountryCode();
@@ -42,8 +42,10 @@ public class CountryCoronaNewsActivity extends AppCompatActivity {
         call.enqueue(new Callback<CountryResponseModel>() {
             @Override
             public void onResponse(Call<CountryResponseModel> call, Response<CountryResponseModel> response) {
-                getNewsItems(response.body().getCca2());
+                if (response.body() != null)
+                    getNewsItems(response.body().getCca2());
             }
+
             @Override
             public void onFailure(Call<CountryResponseModel> call, Throwable t) {
                 call.cancel();
@@ -52,7 +54,7 @@ public class CountryCoronaNewsActivity extends AppCompatActivity {
     }
 
     private void getNewsItems(String countryCode) {
-        Call<NewsResponseModel> call = apiInterface.getNews(countryCode, "health", "32c639db0d774ef4b9d6c9ef09137b0f");
+        Call<NewsResponseModel> call = apiInterface.getNews("https://newsapi.org/v2/top-headlines", countryCode, "health", "32c639db0d774ef4b9d6c9ef09137b0f");
         call.enqueue(new Callback<NewsResponseModel>() {
             @Override
             public void onResponse(Call<NewsResponseModel> call, Response<NewsResponseModel> response) {
@@ -69,9 +71,9 @@ public class CountryCoronaNewsActivity extends AppCompatActivity {
 
     private ArrayList<NewsItemUiModel> MapNewsItems(List<Article> articles) {
         ArrayList<NewsItemUiModel> itemUiModels = new ArrayList<>();
-        for(Article article :articles){
+        for (Article article : articles) {
             itemUiModels.add(new NewsItemUiModel(article.getTitle(), article.getPublishedAt()
-            , article.getUrlToImage(), article.getDescription()));
+                    , article.getUrlToImage(), article.getDescription()));
         }
         return itemUiModels;
     }

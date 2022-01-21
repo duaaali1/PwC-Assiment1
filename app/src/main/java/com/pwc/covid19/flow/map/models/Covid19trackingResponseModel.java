@@ -7,10 +7,14 @@ import java.util.Map;
 
 public class Covid19trackingResponseModel {
 
-    @SerializedName("Dates")
+    @SerializedName("dates")
     @Expose
     private Map<String, Dates> dates;
+    @SerializedName("MetadataObject")
+    @Expose
     Metadata MetadataObject;
+    @SerializedName("TotalObject")
+    @Expose
     Total TotalObject;
     private String updated_at;
 

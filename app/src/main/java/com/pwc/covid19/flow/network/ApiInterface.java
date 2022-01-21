@@ -5,18 +5,19 @@ import com.pwc.covid19.flow.news.models.NewsResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 public interface ApiInterface {
-    @GET("https://newsapi.org/v2/top-headlines")
-    Call<NewsResponseModel> getNews(@Query("country") String country,
+    @GET("{Url}")
+    Call<NewsResponseModel> getNews(@Path(value = "Url") String fullUrl,@Query("country") String country,
                                     @Query("category") String category,
                                     @Query("apiKey") String apiKey);
 
 
 
-    @GET("https://api.covid19tracking.narrativa.com/api")
+    @GET("api")
     Call<Covid19trackingResponseModel> covid19tracking(@Query("date_from") String date_from,
                                                @Query("date_to") String date_to);
 

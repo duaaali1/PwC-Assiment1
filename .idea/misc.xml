@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Aburumman/AndroidStudioProjects/Covid19/app/src/main/res/layout/activity_country_corona_news.xml" value="0.1" />
-        <entry key="..\:/Users/Aburumman/AndroidStudioProjects/Covid19/app/src/main/res/layout/activity_maps.xml" value="0.1" />
-        <entry key="..\:/Users/Aburumman/AndroidStudioProjects/Covid19/app/src/main/res/layout/item_news.xml" value="0.1" />
+        <entry key="..\:/Users/Aburumman/AndroidStudioProjects/Covid19/app/src/main/res/layout/activity_country_corona_news.xml" value="0.12" />
+        <entry key="..\:/Users/Aburumman/AndroidStudioProjects/Covid19/app/src/main/res/layout/activity_maps.xml" value="0.2" />
+        <entry key="..\:/Users/Aburumman/AndroidStudioProjects/Covid19/app/src/main/res/layout/item_news.xml" value="0.22" />
       </map>
     </option>
   </component>
